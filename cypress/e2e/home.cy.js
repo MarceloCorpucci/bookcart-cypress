@@ -4,7 +4,7 @@ describe('Home Page', () => {
     cy.visit('/')
   })
     context('user finds a toolbar containing different options', () => {
-      /*it('shows a toolbar', () => {
+      it('shows a toolbar', () => {
         cy.get('.mat-toolbar-row').should((toolbar) => {
           expect(toolbar).to.exist
         })  
@@ -14,11 +14,11 @@ describe('Home Page', () => {
         cy.get('input[placeholder="Search books or authors"]') 
           .should('have.attr', 'type')
           .and('equal', 'search')
-      })*/
+      })
     })
 
     context('User can add a Book to the Cart', () => {
-      it('can add a book to cart', () => {
+      it('Book added to the cart successfully', () => {
         cy.getABook().then(bookNumber => {
           cy.log(`Book Number: ${bookNumber}`)
         

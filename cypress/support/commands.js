@@ -25,14 +25,11 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 function getABook() {
-    /*cy.get('.col')
-        .find('.d-flex')
-        .then(($value) => {
-            return $value.length
-        })*/
-    
-    return Math.floor(Math.random() * (44 - 1) + 1);
+    cy.get('.mat-mdc-card > .mat-mdc-tooltip-trigger > .mat-mdc-card-image').then(($value) => {
+        return Math.floor(Math.random() * ($value.length - 1) + 1);
+    })
 }
+
 Cypress.Commands.add('getABook', getABook);
 
 Cypress.Commands.add('getBookNameUsing', bookNumber => {
@@ -51,7 +48,7 @@ Cypress.Commands.add('addBookToCartUsing', bookNumber => {
 
 Cypress.Commands.add('goToCart', () => {
     cy.get(".mdc-icon-button > .mat-mdc-button-touch-target").then(cart => {
-        cart.click()
+        cy.wrap(cart).click()
     })
 })
 
